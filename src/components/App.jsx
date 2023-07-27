@@ -23,9 +23,10 @@ export default function App() {
   }, [contacts]);
 
   const formAddContact = contactData => {
-    const contact = { id: nanoid(), ...contactData };
-    setContacts([contact, ...contacts]);
-  };
+  const contact = { id: nanoid(), ...contactData };
+  setContacts(prevState => [...prevState, contact]);
+};
+
 
   const handleOnChangeFilter = evt => {
     setFilter( evt.target.value );    
