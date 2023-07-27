@@ -23,6 +23,14 @@ export default function App() {
   }, [contacts]);
 
   const formAddContact = contactData => {
+  
+  const isExistingContact = contacts.some(contact => contact.name === contactData.name);
+
+  if (isExistingContact) {
+    alert('This contact already exists!');
+    return;
+  }
+
   const contact = { id: nanoid(), ...contactData };
   setContacts(prevState => [...prevState, contact]);
 };
